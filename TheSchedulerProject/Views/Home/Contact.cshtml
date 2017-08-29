@@ -15,7 +15,7 @@
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+      var SCOPES = "https://www.googleapis.com/auth/calendar";
 
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
@@ -76,12 +76,12 @@
         gapi.auth2.getAuthInstance().signOut();
       }
 
-      
+
         @*Append a pre element to the body containing the given message
         as its text node. Used to display the results of the API call.
-       
+
         @param {string} message Text to be placed in pre element.*@
-       
+
       function appendPre(message) {
         var pre = document.getElementById('content');
         var textContent = document.createTextNode(message + '\n');
@@ -93,13 +93,13 @@
        * the authorized user's calendar. If no events are found an
        * appropriate message is printed.
        */
+
       function listUpcomingEvents() {
-        gapi.client.calendar.events.list({
-          'calendarId': 'primary',
-          'timeMin': (new Date()).toISOString(),
+          gapi.client.calendar.events.list({
+              'calendarId': 'primary',
+              'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
-          'maxResults': 25,
           'orderBy': 'startTime'
         }).then(function(response) {
           var events = response.result.items;

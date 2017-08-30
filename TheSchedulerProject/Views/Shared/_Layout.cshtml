@@ -12,11 +12,11 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <!--FullCalendar  Style Sheets-->
-    <link href="~/fullcalendar-3.4.0/fullcalendar.print.min.css" rel="stylesheet" />
-    <link href="~/fullcalendar-3.4.0/fullcalendar.print.css" rel="stylesheet" />
+    @*<link href="~/fullcalendar-3.4.0/fullcalendar.print.min.css" rel="stylesheet" />
+    <link href="~/fullcalendar-3.4.0/fullcalendar.print.css" rel="stylesheet" />*@
     <link href="~/fullcalendar-3.4.0/fullcalendar.min.css" rel="stylesheet" />
-    <link href="~/fullcalendar-3.4.0/fullcalendar.css" rel="stylesheet" />
-    <link href="~/fullcalendar-3.4.0/lib/cupertino/jquery-ui.min.css" rel="stylesheet" />
+    @*<link href="~/fullcalendar-3.4.0/fullcalendar.css" rel="stylesheet" />*@
+    @*<link href="~/fullcalendar-3.4.0/lib/cupertino/jquery-ui.min.css" rel="stylesheet" />*@
 
 </head>
 <body>
@@ -56,7 +56,7 @@
     <script src="~/fullcalendar-3.4.0/lib/jquery-ui.min.js"></script>
     <script src="~/fullcalendar-3.4.0/lib/jquery.min.js"></script>
     <script src="~/fullcalendar-3.4.0/lib/moment.min.js"></script>
-    <script src="~/fullcalendar-3.4.0/locale/af.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/locale/af.js"></script>
     <script src="~/fullcalendar-3.4.0/locale/ar-dz.js"></script>
     <script src="~/fullcalendar-3.4.0/locale/ar-kw.js"></script>
     <script src="~/fullcalendar-3.4.0/locale/ar-ly.js"></script>
@@ -122,12 +122,23 @@
     <script src="~/fullcalendar-3.4.0/locale/uk.js"></script>
     <script src="~/fullcalendar-3.4.0/locale/vi.js"></script>
     <script src="~/fullcalendar-3.4.0/locale/zh-cn.js"></script>
-    <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>
-    <script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>*@
+    @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
     <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
-    <script src="~/fullcalendar-3.4.0/gcal.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>
     <script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
-    <script src="~/fullcalendar-3.4.0/locale-all.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
+    <script>
+        $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
+
+});
+    </script>
 
 
 </body>

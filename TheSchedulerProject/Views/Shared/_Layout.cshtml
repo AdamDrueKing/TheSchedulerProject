@@ -125,9 +125,12 @@
     <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>*@
     @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
     <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
-    @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>
-    <script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
+    <script src="~/fullcalendar-3.4.0/gcal.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
     <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
+
+    @*Initializes the Open Source Calendar*@
+
     <script>
         $(document).ready(function() {
 
@@ -138,6 +141,20 @@
     })
 
 });
+    </script>
+
+    @*Initializes Google Calendar*@
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                googleCalendarApiKey: '<YOUR API KEY>',
+                events: {
+                    googleCalendarId: 'abcd1234@group.calendar.google.com'
+                }
+            });
+        });
+
     </script>
 </body>
 </html>

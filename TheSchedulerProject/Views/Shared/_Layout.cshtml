@@ -7,12 +7,27 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr") 
 
+    <!--Collapsing Modal-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
     <!--Bootstrap Style Sheets-->
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
     <!--FullCalendar  Style Sheets-->
+@*<<<<<<< HEAD*@
     <link href="~/fullcalendar-3.4.0/fullcalendar.print.min.css" rel="stylesheet" />
     <link href="~/fullcalendar-3.4.0/fullcalendar.print.css" rel="stylesheet" />
     <link href="~/fullcalendar-3.4.0/fullcalendar.print.min.css" rel="stylesheet" />
@@ -22,8 +37,109 @@
     <link href="~/fullcalendar-3.4.0/lib/cupertino/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/fullcalendar-3.4.0/fullcalendar.css" rel="stylesheet" />
     <link href="~/fullcalendar-3.4.0/lib/cupertino/jquery-ui.min.css" rel="stylesheet" />
+@*=======*@
+    @*<link href="~/fullcalendar-3.4.0/fullcalendar.print.min.css" rel="stylesheet" />
+    <link href="~/fullcalendar-3.4.0/fullcalendar.print.css" rel="stylesheet" />*@
+    <link href="~/fullcalendar-3.4.0/fullcalendar.min.css" rel="stylesheet" />
+    @*<link href="~/fullcalendar-3.4.0/fullcalendar.css" rel="stylesheet" />*@
+    @*<link href="~/fullcalendar-3.4.0/lib/cupertino/jquery-ui.min.css" rel="stylesheet" />*@
+
+@*>>>>>>> 24c035367431d70e500ea06f5e86fb2e53c7350e*@
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+    
+        <!-- Navbar with Sign-in Ability -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Mind The Gap</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-2">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li>
+                            <a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+                        </li>
+                    </ul>
+                    <div class="collapse nav navbar-nav nav-collapse" id="nav-collapse2">
+                        <form class="navbar-form navbar-right form-inline" role="form">
+                            <div class="form-group">
+                                <label class="sr-only" for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" placeholder="Email" autofocus required />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="Password">Password</label>
+                                <input type="password" class="form-control" id="Password" placeholder="Password" required />
+                            </div>
+                            <button type="submit" class="btn btn-success">Sign in</button>
+                        </form>
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+        
+
+        <!-- Navbar with Profile Info -->
+        @*<nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Mind The Gap</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-4">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li>
+                            <a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">Profile <i class=""></i> </a>
+                        </li>
+                    </ul>
+                    <ul class="collapse nav navbar-nav nav-collapse" role="search" id="nav-collapse4">
+                        <li><a href="#">Support</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="https://pbs.twimg.com/profile_images/588909533428322304/Gxuyp46N.jpg" alt="maridlcrmn" width="20" /> Maridlcrmn <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">My profile</a></li>
+                                <li><a href="#">Favorited</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+    </div><!-- /.container-fluid -->*@
+
+
+
+
+
+
+
+
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -59,6 +175,7 @@
 
 
     <!--JavaScript Files-->
+@*<<<<<<< HEAD*@
         <script src="~/fullcalendar-3.4.0/lib/jquery-ui.min.js"></script>
         <script src="~/fullcalendar-3.4.0/lib/jquery.min.js"></script>
         <script src="~/fullcalendar-3.4.0/lib/moment.min.js"></script>
@@ -194,7 +311,93 @@
         })
         });
 </script>
+=======
+    <script src="~/fullcalendar-3.4.0/lib/jquery-ui.min.js"></script>
+    <script src="~/fullcalendar-3.4.0/lib/jquery.min.js"></script>
+    <script src="~/fullcalendar-3.4.0/lib/moment.min.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/locale/af.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar-dz.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar-kw.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar-ly.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar-ma.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar-sa.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar-tn.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ar.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/bg.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ca.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/cs.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/da.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/de-at.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/de-ch.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/de.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/el.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/en-au.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/en-ca.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/en-gb.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/en-ie.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/en-nz.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/es-do.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/es.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/et.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/eu.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/fa.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/fi.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/fr-ca.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/fr-ch.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/fr.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/gl.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/he.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/hi.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/hr.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/hu.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/id.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/is.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/it.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ja.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/kk.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ko.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/lb.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/lt.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/lv.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/mk.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ms-my.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ms.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/nb.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/nl-be.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/nl.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/nn.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/pl.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/pt-br.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/pt.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ro.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/sk.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/ru.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/sl.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/sr-cyrl.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/sr.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/th.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/sv.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/tr.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/uk.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/vi.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/zh-cn.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>*@
+    @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
+    <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>
+    <script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
+    <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
+    @*<script>
+        $(document).ready(function() {
+     24c035367431d70e500ea06f5e86fb2e53c7350e
 
+    // page is now ready, initialize the calendar...
 
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
+
+});
+    </script>
 </body>
 </html>*@

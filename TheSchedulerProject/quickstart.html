@@ -1,21 +1,28 @@
-﻿<p>Google Calendar API Quickstart</p>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Calendar API Quickstart</title>
+    <meta charset='utf-8' />
+</head>
+<body>
+    <p>Google Calendar API Quickstart</p>
 
-<!--Add buttons to initiate auth sequence and sign out-->
-<button id="authorize-button" style="display: block;">Authorize</button>
-<button id="signout-button" style="display: none;">Sign Out</button>
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize-button" style="display: none;">Authorize</button>
+    <button id="signout-button" style="display: none;">Sign Out</button>
 
-<pre id="content"></pre>
+    <pre id="content"></pre>
 
-<script type="text/javascript">
+    <script type="text/javascript">
       // Client ID and API key from the Developer Console
-    var CLIENT_ID = '564506460648-knam6scga0e8i8ohtfs0246nnl4ffu39.apps.googleusercontent.com';
+      var CLIENT_ID = '<YOUR_CLIENT_ID>';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      var SCOPES = "https://www.googleapis.com/auth/calendar";
+      var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
@@ -76,12 +83,12 @@
         gapi.auth2.getAuthInstance().signOut();
       }
 
-
-        @*Append a pre element to the body containing the given message
-        as its text node. Used to display the results of the API call.
-
-        @param {string} message Text to be placed in pre element.*@
-
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
       function appendPre(message) {
         var pre = document.getElementById('content');
         var textContent = document.createTextNode(message + '\n');
@@ -93,13 +100,13 @@
        * the authorized user's calendar. If no events are found an
        * appropriate message is printed.
        */
-
       function listUpcomingEvents() {
-          gapi.client.calendar.events.list({
-              'calendarId': 'primary',
-              'timeMin': (new Date()).toISOString(),
+        gapi.client.calendar.events.list({
+          'calendarId': 'primary',
+          'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
+          'maxResults': 10,
           'orderBy': 'startTime'
         }).then(function(response) {
           var events = response.result.items;
@@ -112,7 +119,7 @@
               if (!when) {
                 when = event.start.date;
               }
-              appendPre(event.summary + ' (' + when + ')' + event.end.dateTime)
+              appendPre(event.summary + ' (' + when + ')')
             }
           } else {
             appendPre('No upcoming events found.');
@@ -120,9 +127,11 @@
         });
       }
 
-</script>
+    </script>
 
-<script async defer src="https://apis.google.com/js/api.js"
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-</script>
+    <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+</body>
+</html>

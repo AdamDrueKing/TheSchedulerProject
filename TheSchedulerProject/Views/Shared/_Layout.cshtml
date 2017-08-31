@@ -126,6 +126,7 @@
     @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
     <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
     <script src="~/fullcalendar-3.4.0/gcal.js"></script>
+    <script src="~/fullcalendar-3.4.0/GCal2.js"></script>
     @*<script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
         <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
 
@@ -140,7 +141,7 @@
                 // THIS KEY WON'T WORK IN PRODUCTION!!!
                 // To make your own Google API key, follow the directions here:
                 // http://fullcalendar.io/docs/google_calendar/
-                googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+                CLIENT_ID: '564506460648-knam6scga0e8i8ohtfs0246nnl4ffu39.apps.googleusercontent.com',
 
                 // US Holidays
                 events: 'en.usa#holiday@group.v.calendar.google.com',
@@ -161,7 +162,7 @@
     </script>
 
     @*Initializes Google Calendar*@
-    <script type='text/javascript'>
+    @*<script type='text/javascript'>
 
         $(document).ready(function () {
             $('#calendar').fullCalendar({
@@ -172,6 +173,11 @@
             });
         });
 
+    </script>*@
+
+    <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
 </body>
 </html>

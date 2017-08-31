@@ -1,6 +1,32 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+<script>
+    $(document).ready(function () {
+        var events = [];
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetEvents",
+            success: function (data) {
+                $.each(data, function (index, value) {
+                    events.push({
+                        title: value.summary,
+                        description: value.description,
+                        start: value.start_dateTime,
+                        end: value.end_dateTime,
+                        color: value.colorId,
+                    });
+                })
+
+                GenerateCalender(events);
+            },
+            error: function (error) {
+                alert('failed');
+            }
+        });
+           
+</script>
 <!--Calendar-->
 <div class="row">
     <div class="col-sm-8 col-md-10">

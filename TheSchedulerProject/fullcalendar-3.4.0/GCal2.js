@@ -1,5 +1,4 @@
-﻿// Client ID and API key from the Developer Console
-var CLIENT_ID = '564506460648-knam6scga0e8i8ohtfs0246nnl4ffu39.apps.googleusercontent.com';
+﻿var CLIENT_ID = '564506460648-knam6scga0e8i8ohtfs0246nnl4ffu39.apps.googleusercontent.com';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -18,7 +17,10 @@ function handleClientLoad() {
     gapi.load('client:auth2', initClient);
 }
 
-
+/**
+ *  Initializes the API client library and sets up sign-in state
+ *  listeners.
+ */
 function initClient() {
     gapi.client.init({
         discoveryDocs: DISCOVERY_DOCS,
@@ -36,9 +38,9 @@ function initClient() {
 }
 
 /**
-       *  Called when the signed in status changes, to update the UI
-       *  appropriately. After a sign-in, the API is called.
-       */
+ *  Called when the signed in status changes, to update the UI
+ *  appropriately. After a sign-in, the API is called.
+ */
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         authorizeButton.style.display = 'none';
@@ -50,8 +52,8 @@ function updateSigninStatus(isSignedIn) {
 }
 
 /**
-       *  Sign in the user upon button click.
-       */
+ *  Sign in the user upon button click.
+ */
 function handleAuthClick(event) {
     gapi.auth2.getAuthInstance().signIn();
 }

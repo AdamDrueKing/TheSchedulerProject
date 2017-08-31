@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TheSchedulerProject.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.start_dateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.end_dateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recurrence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.completed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interest.title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.start_dateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.end_dateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recurrence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.completed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Interest.title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.eventId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.eventId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.eventId })
+        </td>
+    </tr>
+}
+
+</table>

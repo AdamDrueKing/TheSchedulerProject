@@ -1,0 +1,96 @@
+﻿@model TheSchedulerProject.Models.Event
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.summary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.summary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start_dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_dateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end_dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end_dateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recurrence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recurrence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.completed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.completed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest.title)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

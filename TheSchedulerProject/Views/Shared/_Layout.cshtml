@@ -126,25 +126,25 @@
 
 
     @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>*@
+        </div>*@
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -161,7 +161,7 @@
 
     <!--JavaScript Files-->
     @*<script src="~/fullcalendar-3.4.0/lib/jquery-ui.min.js"></script>*@
-    <script src="~/fullcalendar-3.4.0/lib/jquery.min.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/lib/jquery.min.js"></script>*@
     <script src="~/fullcalendar-3.4.0/lib/moment.min.js"></script>
     @*<script src="~/fullcalendar-3.4.0/locale/af.js"></script>
         <script src="~/fullcalendar-3.4.0/locale/ar-dz.js"></script>
@@ -232,10 +232,10 @@
         <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>*@
     @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
     <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
-    <script src="~/fullcalendar-3.4.0/gcal.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>*@
     <script src="~/fullcalendar-3.4.0/GCal2.js"></script>
     @*<script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
-        <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
+    <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
 
     @*Initializes the Open Source Calendar*@
 
@@ -267,24 +267,10 @@
             })
         });
     </script>
-
-    @*Initializes Google Calendar*@
-    @*<script type='text/javascript'>
-
-        $(document).ready(function () {
-            $('#calendar').fullCalendar({
-                googleCalendarApiKey: '<YOUR API KEY>',
-                events: {
-                    googleCalendarId: 'abcd1234@group.calendar.google.com'
-                }
-            });
-        });
-
-    </script>*@
-
     <script async defer src="https://apis.google.com/js/api.js"
             onload="this.onload=function(){};handleClientLoad()"
-            onreadystatechange="if (this.readyState === 'complete') this.onload()">S
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+S
     </script>
 </body>
 </html>

@@ -1,0 +1,90 @@
+﻿@model TheSchedulerProject.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.summary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.summary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start_dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_dateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end_dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end_dateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recurrence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recurrence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.completed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.completed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest.title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.eventId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

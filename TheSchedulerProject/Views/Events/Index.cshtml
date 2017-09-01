@@ -6,7 +6,168 @@
 
 <h2>Index</h2>
 
-<p>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script>
+    $(document).ready(function () {
+        var events = [];
+        $.ajax({
+            type: "GET",
+            url: "/home/GetEvents",
+            success: function (data) {
+                $.each(data, function (i, v) {
+                    events.push({
+                        title: v.summary,
+                        description: v.description,
+                        start: moment(v.start_dateTime),
+                        end: moment(v.end_dateTime),
+                        color: v.colorId,
+                    });
+                })
+
+                GenerateCalender(events);
+            },
+            error: function (error) {
+                alert('failed');
+
+            }
+        })
+
+        function GenerateCalender(events) {
+            $('#calender').fullCalendar('destroy');
+            $('#calender').fullCalendar({
+                contentHeight: 400,
+                defaultDate: new Date(),
+                timeFormat: 'h(:mm)a',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay,agenda'
+                },
+                eventLimit: true,
+                eventColor: '#378006',
+                events: events,
+                eventClick: function (CalEvent, jsEvent, view) {
+                    $('#myModal #eventTitle').text(calEvent.title);
+                    var $description = $('<div/>');
+                    $description.append($('<p/>').html('<b>Start:</b>' + CalEvent.start.format("DD-MMM-YYYY HH:mm a")))
+                    if (calEvent.end != null) {
+                        $description.append($('<p/>').html('<b>End:</b>' + CalEvent.end.format("DD-MMM-YYYY HH:mm a")))
+                    }
+                    $description.append > d($('<p/>').html('<b>Description:</b' + calEvent.description));
+                    $('#myModal #pDetails').empty().html($description);
+
+                    $('#myModal').modal();
+                }
+            })
+        }
+    })
+</script>
+
+<!--Calendar-->
+<div class="row">
+    <div class="col-sm-8 col-md-10">
+        <button id="authorize-button" style="display: block;">Authorize</button>
+        <button id="signout-button" style="display: none;">Sign Out</button>
+        <div id="calendar"></div>
+    </div>
+    <div class="col-sm-4 col-md-2">
+        <div class="nav-side-menu">
+            <div class="brand">To-Do List</div>
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+            <div class="menu-list">
+
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                        <a href="#"><i class="fa fa-gift fa-lg"></i> Work <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="products">
+                        <li class="active"><a href="#">Work</a></li>
+                        <li><a href="#">General</a></li>
+                        <li><a href="#">Buttons</a></li>
+                        <li><a href="#">Tabs & Accordions</a></li>
+                        <li><a href="#">Typography</a></li>
+                        <li><a href="#">FontAwesome</a></li>
+                        <li><a href="#">Slider</a></li>
+                        <li><a href="#">Panels</a></li>
+                        <li><a href="#">Widgets</a></li>
+                        <li><a href="#">Bootstrap Model</a></li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#service" class="collapsed">
+                        <a href="#"><i class="fa fa-globe fa-lg"></i> Tasks <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="service">
+                        <li>New Service 1</li>
+                        <li>New Service 2</li>
+                        <li>New Service 3</li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#new" class="collapsed">
+                        <a href="#"><i class="fa fa-car fa-lg"></i> Interests <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="new">
+                        <li>New New 1</li>
+                        <li>New New 2</li>
+                        <li>New New 3</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+
+
+        @*<div>
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">To-Do List</button>
+                <div id="demo" class="collapse">
+                    <p>Work</p>
+                    <form action="/action_page.php">
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                    <p>Tasks</p>
+                    <form action="/action_page.php">
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                    <p>Interests</p>
+                    <form action="/action_page.php">
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="text"><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -78,4 +239,4 @@
     </tr>
 }
 
-</table>
+</table>*@

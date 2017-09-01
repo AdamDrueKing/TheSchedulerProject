@@ -11,31 +11,31 @@
 }
 
 <script>
-    $(document).ready(function () {
-        var events = [];
-        $.ajax({
-            type: "GET",
-            url: "/home/GetEvents",
-            success: function (data) {
-                $.each(data, function (i, v) {
-                    events.push({
-                        title: v.summary,
-                        description: v.description,
-                        start: moment(v.start_dateTime),
-                        end: moment(v.end_dateTime),
-                        color: v.colorId,
-                    });
-                })
+        $(document).ready(function () {
+            var events = [];
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetEvents")",
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            title: v.summary,
+                            description: v.description,
+                            start: moment(v.start_dateTime),
+                            end: v.end_dateTime != null ? moment(v.end_dateTime) : null,
+                            color: v.colorId
+                        });
+                    })
 
-                GenerateCalender(events);
-            },
-            error: function (error) {
-                alert('failed');
+                    GenerateCalender(events);
+                },
+                error: function (error) {
+                    alert('failed');
 
-            }
-        })
+                }
+            })
 
-        function GenerateCalender(events) {
+            function GenerateCalender(events){
             $('#calender').fullCalendar('destroy');
             $('#calender').fullCalendar({
                 contentHeight: 400,
@@ -50,20 +50,11 @@
                 eventColor: '#378006',
                 events: events,
                 eventClick: function (CalEvent, jsEvent, view) {
-                    $('#myModal #eventTitle').text(calEvent.title);
-                    var $description = $('<div/>');
-                    $description.append($('<p/>').html('<b>Start:</b>' + CalEvent.start.format("DD-MMM-YYYY HH:mm a")))
-                    if (calEvent.end != null) {
-                        $description.append($('<p/>').html('<b>End:</b>' + CalEvent.end.format("DD-MMM-YYYY HH:mm a")))
-                    }
-                    $description.append > d($('<p/>').html('<b>Description:</b' + calEvent.description));
-                    $('#myModal #pDetails').empty().html($description);
 
-                    $('#myModal').modal();
                 }
             })
-        }
-    })
+          }
+        })
 </script>
 
 <!--Calendar-->

@@ -42,7 +42,7 @@ function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
-        makeApiCall();
+        //makeApiCall();
     }
     else {
         authorizeButton.style.display = 'block';
@@ -61,14 +61,15 @@ function handleSignoutClick(event) {
     gapi.auth2.getAuthInstance().signOut();
 }
 
-function makeApiCall() {
-    // Make an API call to the People API, and print the user's given name.
-    gapi.client.calendar.
-        'resourceName': 'people/me',
-        'requestMask.includeField': 'person.names'
-    }).then(function (response) {
-        console.log('Hello, ' + response.result.names[0].givenName);
-    }, function (reason) {
-        console.log('Error: ' + reason.result.error.message);
-    });
-}
+//function makeApiCall() {
+//    // Make an API call to the People API, and print the user's given name.
+//    gapi.client.calendar.events {
+//        'calendarId': 'primary',
+//            'resource': event
+
+//    }).then(function (response) {
+//        console.log('Hello, ' + response.result.names[0].givenName);
+//    }, function (reason) {
+//        console.log('Error: ' + reason.result.error.message);
+//    });
+//}

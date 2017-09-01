@@ -232,10 +232,10 @@
         <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>*@
     @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
     <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
-     @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>*@
-    <script src="~/fullcalendar-3.4.0/GCal2.js"></script>
+    @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>*@
+    @*<script src="~/fullcalendar-3.4.0/GCal2.js"></script>*@
     <script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
-        @*<script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
+    @*<script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
 
     @*Initializes the Open Source Calendar*@
 
@@ -246,7 +246,50 @@
 
                 googleCalendarApiKey: 'AIzaSyAsOIuikEWJisvhZ-XctdMiikl0v2LUUfw',
 
-                events: 'en.usa#holiday@group.v.calendar.google.com',
+                events: function () {
+                    var events = [];
+                    $.ajax({
+                        type: "GET",
+                        url: "@Url.Action("GetEvents","EventsController")",
+                        success: function (data) {
+                            $.each(data, function (i, v) {
+                                events.push({
+                                    title: v.summary,
+                                    description: v.description,
+                                    start: moment(v.start_dateTime),
+                                    end: v.end_dateTime != null ? moment(v.end_dateTime) : null,
+                                    color: v.colorId
+                                });
+                            })
+
+                            GenerateCalender(events);
+                        },
+                        error: function (error) {
+                            alert('failed');
+
+                        }
+                    })
+
+                    function GenerateCalender(events) {
+                        $('#calender').fullCalendar('destroy');
+                        $('#calender').fullCalendar({
+                            contentHeight: 400,
+                            defaultDate: new Date(),
+                            timeFormat: 'h(:mm)a',
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,basicWeek,basicDay,agenda'
+                            },
+                            eventLimit: true,
+                            eventColor: '#378006',
+                            events: events,
+                            eventClick: function (CalEvent, jsEvent, view) {
+
+                            }
+                        })
+                    }
+                },
 
                 eventClick: function (event) {
                     // opens events in a popup window
@@ -256,6 +299,33 @@
 
                 loading: function (bool) {
                     $('#loading').toggle(bool);
+                },
+
+                Captureevents: function listUpcomingEvents() {
+                    gapi.client.calendar.events.list({
+                        'calendarId': 'primary',
+                        'timeMin': (new Date()).toISOString(),
+                        'showDeleted': false,
+                        'singleEvents': true,
+                        'orderBy': 'startTime'
+                    }).then(function (response) {
+                        var events = response.result.items;
+
+                        appendPre('Upcoming events:');
+
+                        if (events.length > 0) {
+                            for (i = 0; i < events.length; i++) {
+                                var event = events[i];
+                                var when = event.start.dateTime;
+                                if (!when) {
+                                    when = event.start.date;
+                                }
+                                appendPre(event.summary + ' (' + when + ')' + event.end.dateTime)
+                            }
+                        } else {
+                            appendPre('No upcoming events found.');
+                        }
+                    });
                 }
             });
         });

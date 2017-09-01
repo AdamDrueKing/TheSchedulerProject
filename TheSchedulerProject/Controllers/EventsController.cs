@@ -23,9 +23,9 @@ namespace TheSchedulerProject.Controllers
 
         public JsonResult GetEvents()
         {
-            using (TheSchedulerProjectEntities dc = new TheSchedulerProjectEntities())
+            using (TheSchedulerProjectEntities db = new TheSchedulerProjectEntities())
             {
-                var events = dc.Events.ToList();
+                var events = db.Events.ToList();
                 return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }

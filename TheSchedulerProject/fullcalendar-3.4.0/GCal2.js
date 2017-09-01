@@ -63,7 +63,7 @@ function handleSignoutClick(event) {
 
 function makeApiCall() {
     // Make an API call to the People API, and print the user's given name.
-    gapi.client.people.people.get({
+    gapi.client.calendar.
         'resourceName': 'people/me',
         'requestMask.includeField': 'person.names'
     }).then(function (response) {

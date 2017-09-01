@@ -73,7 +73,7 @@ FC.sourceFetchers.push(function(sourceOptions, start, end, timezone) {
 
 function transformOptions(sourceOptions, start, end, timezone, calendar) {
 	var url = API_BASE + '/' + encodeURIComponent(sourceOptions.googleCalendarId) + '/events?callback=?'; // jsonp
-    var clientId = sourceOptions.CLIENT_ID || calendar.opt('CLIENT_ID');
+    var apiKey = sourceOptions.googleCalendarApiKey || calendar.opt('AIzaSyAsOIuikEWJisvhZ- XctdMiikl0v2LUUfw');
 	var success = sourceOptions.success;
 	var data;
 	var timezoneArg; // populated when a specific timezone. escaped to Google's liking
@@ -89,7 +89,7 @@ function transformOptions(sourceOptions, start, end, timezone, calendar) {
 		FC.warn.apply(null, [ message ].concat(apiErrorObjs || []));
 	}
 
-    if (!clientId) {
+	if (!apiKey) {
 		reportError("Specify a googleCalendarApiKey. See http://fullcalendar.io/docs/google_calendar/");
 		return {}; // an empty source to use instead. won't fetch anything.
 	}
@@ -111,7 +111,7 @@ function transformOptions(sourceOptions, start, end, timezone, calendar) {
 	}
 
 	data = $.extend({}, sourceOptions.data || {}, {
-        clientId: clientId,
+		key: apiKey,
 		timeMin: start.format(),
 		timeMax: end.format(),
 		timeZone: timezoneArg,

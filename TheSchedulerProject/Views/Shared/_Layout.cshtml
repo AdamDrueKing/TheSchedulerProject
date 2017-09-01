@@ -232,10 +232,10 @@
         <script src="~/fullcalendar-3.4.0/locale/zh-tw.js"></script>*@
     @*<script src="~/fullcalendar-3.4.0/fullcalendar.js"></script>*@
     <script src="~/fullcalendar-3.4.0/fullcalendar.min.js"></script>
-    @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>*@
+     @*<script src="~/fullcalendar-3.4.0/gcal.js"></script>*@
     <script src="~/fullcalendar-3.4.0/GCal2.js"></script>
-    @*<script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
-        <script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
+    <script src="~/fullcalendar-3.4.0/gcal.min.js"></script>
+        @*<script src="~/fullcalendar-3.4.0/locale-all.js"></script>*@
 
     @*Initializes the Open Source Calendar*@
 
@@ -247,37 +247,20 @@
                 googleCalendarApiKey: 'AIzaSyAsOIuikEWJisvhZ-XctdMiikl0v2LUUfw',
 
                 events: 'en.usa#holiday@group.v.calendar.google.com',
+
+                eventClick: function (event) {
+                    // opens events in a popup window
+                    window.open(event.url, 'gcalevent', 'width=700,height=600');
+                    return false;
+                },
+
+                loading: function (bool) {
+                    $('#loading').toggle(bool);
+                }
             });
         });
 
     </script>
-    @*$(document).ready(function () {
-    $('#calendar').fullCalendar({
-
-    displayEventTime: false, // don't show the time column in list view
-    apiKey: 'AIzaSyAsOIuikEWJisvhZ-XctdMiikl0v2LUUfw',
-    // THIS KEY WON'T WORK IN PRODUCTION!!!
-    // To make your own Google API key, follow the directions here:
-    // http://fullcalendar.io/docs/google_calendar/
-    //CLIENT_ID: '564506460648-knam6scga0e8i8ohtfs0246nnl4ffu39.apps.googleusercontent.com',
-
-    // US Holidays
-    events: 'en.usa#holiday@group.v.calendar.google.com',
-
-    eventClick: function (event) {
-    // opens events in a popup window
-    window.open(event.url, 'gcalevent', 'width=700,height=600');
-    return false;
-    },
-
-    loading: function (bool) {
-    $('#loading').toggle(bool);
-    }
-
-
-    })
-    });
-    </script>*@
     <script async defer src="https://apis.google.com/js/api.js"
             onload="this.onload=function(){};handleClientLoad()"
             onreadystatechange="if (this.readyState === 'complete') this.onload()">
